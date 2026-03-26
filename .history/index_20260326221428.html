@@ -1,0 +1,496 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <!-- 响应式视口，确保触控与缩放优化，避免移动端延迟 -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <title>逢甲大學資訊工程學系 | 頂尖AI與資通訊人才培育基地</title>
+    <meta name="description" content="逢甲大學資訊工程學系官方網站，提供學系介紹、招生資訊、課程介紹、系所成員、最新消息、競賽資訊等。本系為我國資訊教育先驅，培育AI、資安、雲端運算頂尖人才。">
+    <meta name="theme-color" content="#1b9dff">
+    <!-- 预连接关键第三方来源，减少DNS延迟 -->
+    <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
+    <link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin>
+    <!-- 预加载 LCP 图片（轮播首张），并指定高优先级 -->
+    <link rel="preload" as="image" href="/media/img/news/banner/2026%E5%B9%B4%E7%94%B3%E8%AB%8B%E8%BD%89%E5%85%A5%E8%B3%87%E8%A8%8A%E7%B3%BB%E5%85%AC%E5%91%8A.png.1336x470_q85_box-0%2C0%2C4536%2C1595_crop_detail.jpg" fetchpriority="high">
+    <!-- 非关键CSS异步加载，避免阻塞渲染 -->
+    <link rel="preload" as="style" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" onload="this.onload=null;this.rel='stylesheet'">
+    <link rel="preload" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" onload="this.onload=null;this.rel='stylesheet'">
+    <link rel="preload" as="style" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" onload="this.onload=null;this.rel='stylesheet'">
+    <noscript>
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css">
+    </noscript>
+
+    <!-- 内联关键CSS：彻底消除CLS、提升对比度、确保图片占位、优化触控目标 -->
+    <style>
+        /* ---------- 全局重置 ---------- */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            background-color: #ffffff;
+            color: #1a2c3e;
+            font-family: system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
+            line-height: 1.5;
+            scroll-behavior: smooth;
+        }
+        /* 图片强制宽高占位，消除布局偏移 (配合 width/height 属性) */
+        img {
+            max-width: 100%;
+            height: auto;
+            display: block;
+            /* 使用后备纵横比，确保未加载时保留空间 */
+            aspect-ratio: attr(width) / attr(height);
+        }
+        /* 卡片图片容器保证固定比例，彻底解决 CLS */
+        .card-img-top,
+        .carousel-item img {
+            width: 100%;
+            height: auto;
+            object-fit: cover;
+        }
+        /* 轮播容器预留最小高度，防止加载偏移 */
+        .carousel-inner {
+            min-height: 260px;
+            background-color: #f5f7fa;
+        }
+        @media (min-width: 768px) {
+            .carousel-inner { min-height: 380px; }
+        }
+        @media (min-width: 992px) {
+            .carousel-inner { min-height: 470px; }
+        }
+        /* Swiper 视频区预留高度，防止闪烁 */
+        .swiper {
+            min-height: 320px;
+        }
+        .swiper-slide {
+            height: auto;
+        }
+        /* 视频卡片图片比例固定 16:9 */
+        .index-video img {
+            aspect-ratio: 16 / 9;
+            object-fit: cover;
+            width: 100%;
+        }
+        /* 按钮高对比度 (WCAG AA) 及触控尺寸 */
+        .btn-primary.custom-btn-style {
+            background-color: #0a58ca !important;
+            border-color: #0a58ca !important;
+            color: #ffffff !important;
+            transition: all 0.2s ease;
+            min-height: 44px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 0.5rem 1.2rem;
+            font-weight: 500;
+        }
+        .btn-primary.custom-btn-style:hover {
+            background-color: #004085 !important;
+            border-color: #004085 !important;
+        }
+        /* 修正活动日期对比度 */
+        .post-event-date {
+            background-color: #1e466e;
+            color: #ffffff;
+            border-radius: 0.75rem;
+            min-width: 70px;
+        }
+        .post-event-date .month,
+        .post-event-date .day,
+        .post-event-date .year {
+            color: #ffffff;
+        }
+        /* 亮点卡片文字对比度 */
+        .honor-card .card-text {
+            color: #b12e1f;
+            font-weight: 600;
+        }
+        /* Footer 深色背景，确保对比度达标 */
+        footer.custom-bg-color-1 {
+            background-color: #2c3e4e;
+        }
+        footer .list-unstyled a,
+        footer p, footer a, footer li,
+        footer .custom-fontsize-6 {
+            color: #f8fafc !important;
+        }
+        footer a:hover {
+            color: #ffd966 !important;
+            text-decoration: underline;
+        }
+        /* 隐藏的 h1 仅供 SEO */
+        h1.visually-hidden {
+            position: absolute;
+            width: 1px;
+            height: 1px;
+            padding: 0;
+            margin: -1px;
+            overflow: hidden;
+            clip: rect(0,0,0,0);
+            border: 0;
+        }
+        /* 确保导航链接和按钮触控区域 ≥44px */
+        .navbar-nav .nav-link, .dropdown-item, .btn,
+        .swiper-button-next, .swiper-button-prev,
+        .carousel-control-prev, .carousel-control-next {
+            min-height: 44px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+        }
+        /* 标题层级修正 */
+        .section-event h2, .fw-bold.h2-like {
+            font-size: 1.75rem;
+            font-weight: 700;
+            margin-bottom: 1.2rem;
+        }
+        /* 卡片标题语义 */
+        .card-title {
+            font-size: 1.25rem;
+            font-weight: 600;
+        }
+        /* 16:9 容器 */
+        .ratio-16x9 {
+            aspect-ratio: 16 / 9;
+        }
+        /* 字体显示策略，减少 FOIT */
+        @font-face {
+            font-family: 'Font Awesome 6 Free';
+            font-display: swap;
+        }
+        @font-face {
+            font-family: 'Font Awesome 6 Brands';
+            font-display: swap;
+        }
+        /* 为未指定宽高的图片提供后备 */
+        img:not([width]) {
+            aspect-ratio: 16 / 9;
+        }
+        /* 列表项交互提升 */
+        .list-group-item {
+            background-color: #fff;
+            color: #1a3b4f;
+            font-weight: 500;
+            transition: background 0.2s;
+        }
+        .list-group-item:hover {
+            background-color: #eef4ff;
+        }
+        /* 防止隐藏滚动条导致的布局偏移 */
+        html {
+            scrollbar-gutter: stable;
+        }
+        /* 确保卡片内部无溢出 */
+        .card {
+            overflow: hidden;
+        }
+    </style>
+</head>
+<body>
+<header>
+    <nav class="navbar navbar-expand-lg bg-white shadow-sm">
+        <div class="container" id="nav-content">
+            <a class="navbar-brand" href="/" aria-label="回首頁">
+                <img id="logo" alt="逢甲大學資訊工程學系" width="200" height="80" src="/static/image/logo.svg" loading="eager">
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="切換導覽">
+                <i class="fa-solid fa-bars"></i>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+                    <li class="nav-item dropdown top-nav" id="enrollment">
+                        <div class="category-container d-flex align-items-center">
+                            <a class="nav-link category" href="/enrollment/">招生/Admission</a>
+                            <button class="dropdown-btn btn btn-link p-0 ms-1" aria-label="展開選單" aria-expanded="false"><i class="fas fa-chevron-down"></i></button>
+                        </div>
+                        <ul class="dropdown-menu">
+                            <li><a href="https://freshman.fcu.edu.tw/" class="dropdown-item" target="_blank" rel="noopener">新生專區</a></li>
+                            <li><a href="/enrollment/college" class="dropdown-item">學士班</a></li>
+                            <li><a href="/enrollment/master" class="dropdown-item">碩士班</a></li>
+                            <li><a href="/enrollment/doctor" class="dropdown-item">博士班</a></li>
+                            <li><a href="/en/foreign/" class="dropdown-item">Admission</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item dropdown top-nav" id="about">
+                        <div class="category-container d-flex align-items-center">
+                            <a class="nav-link category" href="/about/">關於本系</a>
+                            <button class="dropdown-btn btn btn-link p-0 ms-1" aria-label="展開選單" aria-expanded="false"><i class="fas fa-chevron-down"></i></button>
+                        </div>
+                        <ul class="dropdown-menu">
+                            <li><a href="/about/" class="dropdown-item">本系介紹</a></li>
+                            <li><a href="/about/resource/" class="dropdown-item">教學資源</a></li>
+                            <li><a href="/about/history/" class="dropdown-item">大事紀要</a></li>
+                            <li><a href="/about/outstanding/" class="dropdown-item">系友專區</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item top-nav"><a class="nav-link category" href="/about/course_plan/">課程介紹</a></li>
+                    <li class="nav-item dropdown top-nav" id="teacher_list">
+                        <div class="category-container d-flex align-items-center">
+                            <a class="nav-link category" href="/teacher/#FT">系所成員</a>
+                            <button class="dropdown-btn btn btn-link p-0 ms-1" aria-label="展開選單" aria-expanded="false"><i class="fas fa-chevron-down"></i></button>
+                        </div>
+                        <ul class="dropdown-menu">
+                            <li><a href="/teacher/#major" class="dropdown-item">系主任</a></li>
+                            <li><a href="/teacher/#Honor" class="dropdown-item">榮譽特聘講座</a></li>
+                            <li><a href="/teacher/#CP" class="dropdown-item">講座教授</a></li>
+                            <li><a href="/teacher/#a" class="dropdown-item">特約講座</a></li>
+                            <li><a href="/teacher/#DP" class="dropdown-item">特聘教授</a></li>
+                            <li><a href="/teacher/#FT" class="dropdown-item">專任教師</a></li>
+                            <li><a href="/teacher/#PT" class="dropdown-item">兼任教師</a></li>
+                            <li><a href="/teacher/#administration" class="dropdown-item">行政人員</a></li>
+                            <li><a href="/teacher/#retiree" class="dropdown-item">退休教師</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item dropdown top-nav" id="news">
+                        <div class="category-container d-flex align-items-center">
+                            <a class="nav-link category" href="/news/">訊息與公告</a>
+                            <button class="dropdown-btn btn btn-link p-0 ms-1" aria-label="展開選單" aria-expanded="false"><i class="fas fa-chevron-down"></i></button>
+                        </div>
+                        <ul class="dropdown-menu">
+                            <li><a href="/news/?category=award" class="dropdown-item">系所亮點</a></li>
+                            <li><a href="/news/?category=student" class="dropdown-item">學生專欄</a></li>
+                            <li><a href="/news/?category=exchange" class="dropdown-item">國際交流</a></li>
+                            <li><a href="/news/?category=teaching" class="dropdown-item">課務公告</a></li>
+                            <li><a href="/news/?category=general" class="dropdown-item">事務公告</a></li>
+                            <li><a href="/news/?category=speech" class="dropdown-item">演講公告</a></li>
+                            <li><a href="/news/?category=activity" class="dropdown-item">一般活動公告</a></li>
+                            <li><a href="/news/?category=competition" class="dropdown-item">競爭力活動公告</a></li>
+                            <li><a href="/news/?category=job" class="dropdown-item">企業徵才</a></li>
+                            <li><a href="/news/?category=department_activity" class="dropdown-item">系友活動</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item dropdown top-nav" id="feedback">
+                        <div class="category-container d-flex align-items-center">
+                            <a class="nav-link category" href="/feedback/">問卷回饋</a>
+                            <button class="dropdown-btn btn btn-link p-0 ms-1" aria-label="展開選單" aria-expanded="false"><i class="fas fa-chevron-down"></i></button>
+                        </div>
+                        <ul class="dropdown-menu">
+                            <li><a href="https://forms.office.com/r/0D7CgAcdSK" target="_blank" rel="noopener" class="dropdown-item">畢業生問卷</a></li>
+                            <li><a href="https://forms.gle/Ad23GShTzGuQUuDx5" target="_blank" rel="noopener" class="dropdown-item">系友問卷</a></li>
+                            <li><a href="https://forms.gle/Az1nCP8F8Tif55SA9" target="_blank" rel="noopener" class="dropdown-item">雇主問卷</a></li>
+                            <li><a href="https://docs.google.com/forms/d/e/1FAIpQLSewq5jo7KrndPRlm_HsdBM1Hvxrmr9Ok5Vq6UGh8kRBKuOkGA/viewform" target="_blank" rel="noopener" class="dropdown-item">研究所考取問卷</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item"><a class="nav-link" id="entw" href="/en/"><span class="entwbtn"><i class="fas fa-globe-americas"></i><span class="entwfont ms-1">English</span></span></a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+</header>
+
+<main class="main" style="min-height: calc(100vh - 450px)">
+    <h1 class="visually-hidden">逢甲大學資訊工程學系 - 頂尖AI、資通訊人才培育基地</h1>
+
+    <!-- 轮播区：使用 picture 元素提供现代图片格式后备，并确保宽高比 -->
+    <section class="section-index-index">
+        <div class="container mb-4">
+            <div class="row">
+                <div class="col">
+                    <div id="carousel" class="carousel slide carousel-fade" data-bs-ride="carousel">
+                        <div class="carousel-inner">
+                            <div class="carousel-item active">
+                                <a href="/news/115%E5%AD%B8%E5%B9%B4%E5%BA%A6%E5%A4%A7%E5%AD%B8%E7%94%B3%E8%AB%8B%E5%85%A5%E5%AD%B8%E6%9B%B8%E5%AF%A9%E6%BA%96%E5%82%99%E9%87%8D%E9%BB%9E%E6%8C%87%E5%BC%95/" aria-label="115學年度大學申請入學書審準備重點指引">
+                                    <picture>
+                                        <source srcset="/media/img/news/banner/2026%E5%B9%B4%E7%94%B3%E8%AB%8B%E8%BD%89%E5%85%A5%E8%B3%87%E8%A8%8A%E7%B3%BB%E5%85%AC%E5%91%8A.png.1336x470_q85_box-0%2C0%2C4536%2C1595_crop_detail.jpg" type="image/jpeg">
+                                        <img src="/media/img/news/banner/2026%E5%B9%B4%E7%94%B3%E8%AB%8B%E8%BD%89%E5%85%A5%E8%B3%87%E8%A8%8A%E7%B3%BB%E5%85%AC%E5%91%8A.png.1336x470_q85_box-0%2C0%2C4536%2C1595_crop_detail.jpg" class="d-block w-100" width="1336" height="470" alt="115學年度大學申請入學書審準備重點指引" loading="eager" fetchpriority="high">
+                                    </picture>
+                                </a>
+                            </div>
+                            <div class="carousel-item">
+                                <a href="/news/%E9%80%A2%E7%94%B2%E5%A4%A7%E5%AD%B8%E6%94%9C%E6%89%8B%E8%8F%AF%E7%A2%A9%E6%89%93%E9%80%A0AI%E4%BA%BA%E6%89%8D%E5%9F%B9%E8%82%B2%E5%9F%BA%E5%9C%B0GeForce%20RTX%205080/">
+                                    <picture>
+                                        <source srcset="/media/img/news/banner/912908.jpg.1336x470_q85_box-46%2C38%2C1814%2C662_crop_detail.jpg" type="image/jpeg">
+                                        <img src="/media/img/news/banner/912908.jpg.1336x470_q85_box-46%2C38%2C1814%2C662_crop_detail.jpg" class="d-block w-100" width="1336" height="470" alt="逢甲攜手華碩打造AI人才基地" loading="lazy">
+                                    </picture>
+                                </a>
+                            </div>
+                            <div class="carousel-item">
+                                <a href="/news/2026%E5%B9%B4%E7%94%B3%E8%AB%8B%E8%BD%89%E5%85%A5%E8%B3%87%E8%A8%8A%E7%B3%BB%E5%85%AC%E5%91%8A/">
+                                    <picture>
+                                        <source srcset="/media/img/news/banner/2026%E5%B9%B4%E7%94%B3%E8%AB%8B%E8%BD%89%E5%85%A5%E8%B3%87%E8%A8%8A%E7%B3%BB%E5%85%AC%E5%91%8A.png.1336x470_q85_box-0%2C0%2C4536%2C1595_crop_detail.jpg" type="image/jpeg">
+                                        <img src="/media/img/news/banner/2026%E5%B9%B4%E7%94%B3%E8%AB%8B%E8%BD%89%E5%85%A5%E8%B3%87%E8%A8%8A%E7%B3%BB%E5%85%AC%E5%91%8A.png.1336x470_q85_box-0%2C0%2C4536%2C1595_crop_detail.jpg" class="d-block w-100" width="1336" height="470" alt="2026年申請轉入資訊系公告" loading="lazy">
+                                    </picture>
+                                </a>
+                            </div>
+                            <div class="carousel-item">
+                                <a href="/news/%E3%80%8A%E9%81%A0%E8%A6%8B%E3%80%8B2026%E4%BC%81%E6%A5%AD%E6%9C%80%E6%84%9B%E5%A4%A7%E5%AD%B8%E7%94%9F%E6%8F%AD%E6%9B%89%20%E9%80%A2%E7%94%B2%E5%A5%AA%E7%A7%81%E6%A0%A1%E7%AC%AC%E4%B8%80/">
+                                    <picture>
+                                        <source srcset="/media/img/news/banner/957454_6FzlON4.jpg.1336x470_q85_box-0%2C31%2C1790%2C662_crop_detail.jpg" type="image/jpeg">
+                                        <img src="/media/img/news/banner/957454_6FzlON4.jpg.1336x470_q85_box-0%2C31%2C1790%2C662_crop_detail.jpg" class="d-block w-100" width="1336" height="470" alt="遠見2026企業最愛大學生 逢甲私校第一" loading="lazy">
+                                    </picture>
+                                </a>
+                            </div>
+                        </div>
+                        <button class="carousel-control-prev" type="button" data-bs-target="#carousel" data-bs-slide="prev" aria-label="上一張輪播">
+                            <span class="carousel-control-prev-icon" aria-hidden="true"></span><span class="visually-hidden">上一張</span>
+                        </button>
+                        <button class="carousel-control-next" type="button" data-bs-target="#carousel" data-bs-slide="next" aria-label="下一張輪播">
+                            <span class="carousel-control-next-icon" aria-hidden="true"></span><span class="visually-hidden">下一張</span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 影片区 Swiper 使用安全初始化 -->
+        <div class="container">
+            <h2 class="fw-bold" style="color: #000000;">認識我們</h2>
+            <div class="swiper mySwiper">
+                <div class="swiper-wrapper">
+                    <div class="swiper-slide card"><button data-url="https://www.youtube.com/watch?v=BzFmP4KrLqk" data-bs-toggle="modal" data-bs-target="#modalForVideo" class="index-video border-0 bg-transparent" aria-label="播放影片：AI 時代的資工人生"><img src="/media/img/index/video/BzFmP4KrLqk/0.jpg" width="480" height="270" loading="lazy" alt="AI 時代資工人養成影片"><p class="mt-2 fw-semibold">AI 時代的資工人生</p></button></div>
+                    <div class="swiper-slide card"><button data-url="https://www.youtube.com/watch?v=FmukxCfdeCA" data-bs-toggle="modal" data-bs-target="#modalForVideo" class="index-video border-0 bg-transparent" aria-label="播放影片：資工系教室裡的腦內對決現場"><img src="/media/img/index/video/FmukxCfdeCA/0.jpg" width="480" height="270" loading="lazy" alt="資工系教室實況記錄"><p class="mt-2">資工系教室裡的腦內對決現場</p></button></div>
+                    <div class="swiper-slide card"><button data-url="https://www.youtube.com/watch?v=oDDY-HMa8ec" data-bs-toggle="modal" data-bs-target="#modalForVideo" class="index-video border-0 bg-transparent" aria-label="播放影片：你憧憬的大學是什麼樣子"><img src="/media/img/index/video/oDDY-HMa8ec/0.jpg" width="480" height="270" loading="lazy" alt="大學生活憧憬訪談"><p class="mt-2">你憧憬的大學是什麼樣子</p></button></div>
+                    <div class="swiper-slide card"><button data-url="https://www.youtube.com/watch?v=gJzEtuOyiP4" data-bs-toggle="modal" data-bs-target="#modalForVideo" class="index-video border-0 bg-transparent" aria-label="播放影片：這是我眼中的逢甲大學"><img src="/media/img/index/video/gJzEtuOyiP4/0.jpg" width="480" height="270" loading="lazy" alt="逢甲校園印象"><p class="mt-2">這是我眼中的逢甲大學</p></button></div>
+                    <div class="swiper-slide card"><button data-url="https://www.youtube.com/watch?v=Vwba3LrbsgU" data-bs-toggle="modal" data-bs-target="#modalForVideo" class="index-video border-0 bg-transparent" aria-label="播放影片：關於就讀逢甲資工系的經驗分享"><img src="/media/img/index/video/Vwba3LrbsgU/0.jpg" width="480" height="270" loading="lazy" alt="資工系經驗分享"><p class="mt-2">關於就讀逢甲資工系的經驗分享</p></button></div>
+                    <div class="swiper-slide card"><button data-url="https://www.youtube.com/watch?v=_zZGSaMcWg0" data-bs-toggle="modal" data-bs-target="#modalForVideo" class="index-video border-0 bg-transparent" aria-label="播放影片：連續2年WWDC-Swift學生挑戰賽獲獎"><img src="/media/img/index/video/_zZGSaMcWg0/0.jpg" width="480" height="270" loading="lazy" alt="WWDC Swift 學生挑戰賽獲獎"><p class="mt-2">連續2年WWDC-Swift學生挑戰賽獲獎</p></button></div>
+                </div>
+                <div class="swiper-button-next" aria-label="下一張影片"></div>
+                <div class="swiper-button-prev" aria-label="上一張影片"></div>
+            </div>
+            <!-- 视频模态框 -->
+            <div class="modal fade" id="modalForVideo" tabindex="-1" aria-hidden="true"><div class="modal-dialog modal-dialog-centered modal-lg"><div class="modal-content p-0 bg-dark"><button type="button" class="btn-close btn-close-white position-absolute top-0 end-0 m-3" data-bs-dismiss="modal" aria-label="關閉"></button><div class="ratio ratio-16x9"><iframe id="youtubeIframe" allow="autoplay; encrypted-media" allowfullscreen title="YouTube 影片播放器"></iframe></div></div></div></div>
+        </div>
+
+        <!-- 系所亮点 -->
+        <div class="container mb-5">
+            <h2 class="fw-bold">系所亮點</h2>
+            <div class="row">
+                <div class="col-lg-4 col-md-6 mt-2"><div class="card honor-card"><a href="/news/%E9%80%A2%E7%94%B2%E5%A4%A7%E5%AD%B8%E6%94%9C%E6%89%8B%E8%8F%AF%E7%A2%A9%E6%89%93%E9%80%A0AI%E4%BA%BA%E6%89%8D%E5%9F%B9%E8%82%B2%E5%9F%BA%E5%9C%B0GeForce%20RTX%205080/"><div class="card-img-top overflow-hidden"><img src="/media/img/news/banner/912908.jpg.1336x470_q85_box-46%2C38%2C1814%2C662_crop_detail.jpg" width="1336" height="470" loading="lazy" alt="逢甲華碩AI基地合作"></div><div class="card-body"><p class="card-text">逢甲大學攜手華碩打造AI人才培育基地GeForce RTX 5080</p></div></a></div></div>
+                <div class="col-lg-4 col-md-6 mt-2"><div class="card honor-card"><a href="/news/%E3%80%8A%E9%81%A0%E8%A6%8B%E3%80%8B2026%E4%BC%81%E6%A5%AD%E6%9C%80%E6%84%9B%E5%A4%A7%E5%AD%B8%E7%94%9F%E6%8F%AD%E6%9B%89%20%E9%80%A2%E7%94%B2%E5%A5%AA%E7%A7%81%E6%A0%A1%E7%AC%AC%E4%B8%80/"><div class="card-img-top"><img src="/media/img/news/banner/957454_6FzlON4.jpg.1336x470_q85_box-0%2C31%2C1790%2C662_crop_detail.jpg" width="1336" height="470" loading="lazy" alt="遠見2026企業最愛大學逢甲私校榜首"></div><div class="card-body"><p class="card-text">《遠見》2026企業最愛大學生揭曉 逢甲奪私校第一</p></div></a></div></div>
+                <div class="col-lg-4 col-md-6 mt-2"><div class="card honor-card"><a href="/news/%E9%83%AD%E5%B4%87%E9%9F%8B%E8%80%81%E5%B8%AB%E4%B8%BB%E6%8C%81%E5%9C%8B%E7%A7%91%E6%9C%83%E8%A8%88%E7%95%AB%E7%8D%B2114%E5%B9%B4%E5%BA%A6%E5%9C%8B%E7%A7%91%E6%9C%83%E8%B3%87%E8%A8%8A%E5%AD%B8%E9%96%80%E6%88%90%E6%9E%9C%E5%B1%95%E3%80%8C%E5%84%AA%E8%89%AF%E8%A8%88%E7%95%AB%E5%9F%B7%E8%A1%8C%E6%88%90%E6%9E%9C%E7%8D%8E%E3%80%8D/"><div class="card-img-top"><img src="/media/img/news/banner/messageImage_1768274094987.jpg.1336x470_q85_box-0%2C0%2C787%2C277_crop_detail.jpg" width="787" height="277" loading="lazy" alt="郭崇韋老師獲國科會優良計畫成果獎"></div><div class="card-body"><p class="card-text">郭崇韋老師主持國科會計畫獲優良計畫執行成果獎</p></div></a></div></div>
+            </div>
+            <div class="d-flex justify-content-end mt-3"><a href="/news/?category=award" class="btn btn-primary custom-btn-style" aria-label="觀看更多 - 系所亮點">觀看更多</a></div>
+        </div>
+
+        <section class="section section-no-border bg-white m-0">
+            <div class="container section-event">
+                <div class="row justify-content-center align-items-stretch">
+                    <div class="col-lg-6 d-flex flex-column">
+                        <div><h2 class="fw-bold">國際交流</h2><div class="card box-shadow mb-4"><div class="card-img-top"><img src="/media/img/news/banner/IMG_20240519_205715.jpg.1336x470_q85_box-0%2C1447%2C3120%2C2544_crop_detail.jpg" width="1336" height="470" loading="lazy" alt="海外求學蛻變記"></div><div class="card-body"><a href="/news/%E5%BE%9E%E8%BF%B7%E8%8C%AB%E5%88%B0%E8%A6%BA%E9%86%92%EF%BC%8C%E6%B5%B7%E5%A4%96%E6%B1%82%E5%AD%B8%E8%9B%BB%E8%AE%8A%E8%A8%98%20%EB%B0%A9%ED%99%A9%EC%97%90%EC%84%9C%20%EA%B9%A8%EB%8B%AC%EC%9D%8C%EA%B9%8C%EC%A7%80%20%E2%80%93%20%ED%95%B4%EC%99%B8%20%EC%9C%A0%ED%95%99%20%ED%83%88%EB%B0%94%EA%BF%88%EA%B8%B0/"><h3 class="card-title fs-5">從迷茫到覺醒，海外求學蛻變記 방황에서 깨달음까지 – 해외 유학 탈바꿈기</h3><p class="card-text small">大家好！我是韓基江，一個讀資訊工程系的大四韓國學生…</p></a></div></div><div class="d-flex justify-content-center"><a href="/news/?category=exchange" class="btn btn-primary custom-btn-style" aria-label="觀看更多 - 國際交流">觀看更多</a></div></div>
+
+                        <div class="mt-4"><h2 class="fw-bold">下個活動</h2><div class="card box-shadow mb-4"><div class="card-img-top"><img src="/media/img/news/banner/2026%E5%B9%B4%E7%94%B3%E8%AB%8B%E8%BD%89%E5%85%A5%E8%B3%87%E8%A8%8A%E7%B3%BB%E5%85%AC%E5%91%8A.png.1336x470_q85_box-0%2C0%2C4536%2C1595_crop_detail.jpg" width="1336" height="470" loading="lazy" alt="2026轉系公告"></div><div class="card-body"><a href="/news/2026%E5%B9%B4%E7%94%B3%E8%AB%8B%E8%BD%89%E5%85%A5%E8%B3%87%E8%A8%8A%E7%B3%BB%E5%85%AC%E5%91%8A/"><ul class="d-flex list-unstyled gap-3 small"><li><i class="far fa-clock"></i> 午夜</li><li><i class="fas fa-calendar-check"></i> 2026-03-20</li></ul><h3 class="card-title fs-5">2026年申請轉入資訊系公告</h3><p class="card-text small">轉系申請作業時程：3/18~20 至 MyFCU 線上申請…</p></a></div></div></div>
+
+                        <div class="mt-4"><h2 class="fw-bold">近期活動</h2>
+                            <article class="custom-post-event d-flex align-items-start gap-3"><div class="post-event-date text-center p-2 rounded"><span class="month text-uppercase d-block">三月</span><span class="day fw-bold fs-4">24</span><span class="year">2026</span></div><div><h3 class="h5 fw-bold"><a href="/news/%E3%80%90%E5%B0%88%E9%A1%8C%E6%BC%94%E8%AC%9B%E3%80%91%E6%9B%BE%E7%85%9C%E6%A3%8B%E5%9C%8B%E5%AE%B6%E8%AC%9B%E5%BA%A7%20%E5%A4%A7%E8%AA%9E%E8%A8%80%E6%A8%A1%E5%9E%8B%EF%BC%8C%E5%B7%A6%E5%8F%B3%E4%B8%8D%E5%88%86/">【專題演講】曾煜棋國家講座 大語言模型，左右不分</a></h3><p class="small">[軟工組] 大語言模型，左右不分</p></div></article><hr>
+                            <article class="custom-post-event d-flex align-items-start gap-3"><div class="post-event-date text-center p-2 rounded"><span class="month text-uppercase d-block">三月</span><span class="day fw-bold fs-4">31</span><span class="year">2026</span></div><div><h3 class="h5 fw-bold"><a href="/news/%E3%80%90%E5%B0%88%E9%A1%8C%E6%BC%94%E8%AC%9B%E3%80%91%20%E6%A5%8A%E7%AB%A3%E5%B4%B4%E6%95%99%E6%8E%88%20%E6%B7%BA%E8%AB%87%E9%87%8F%E5%AD%90%E5%AF%86%E7%A2%BC%E5%AD%B8/">【專題演講】楊竣崴教授 淺談量子密碼學</a></h3><p class="small">[資安組] 淺談量子密碼學</p></div></article>
+                            <div class="d-flex justify-content-center mt-3"><a href="/news/" class="btn btn-primary custom-btn-style" aria-label="前往最新活動">前往最新活動</a></div>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-6 d-flex flex-column">
+                        <div><h2 class="fw-bold">資訊科技要聞</h2><div class="list-group mb-4">
+                            <a href="https://udn.com/news/story/6928/8344098" class="list-group-item list-group-item-action">資通訊產業夯 高中生最愛電資科系排行學生選系不選校</a>
+                            <a href="https://www.cna.com.tw/postwrite/chi/368121" class="list-group-item list-group-item-action">逢甲大學資訊工程學系 第54屆中區分區技能競賽拿下六個獎項</a>
+                            <a href="https://udn.com/news/story/7241/7792131" class="list-group-item list-group-item-action">成大等五校奪企業最愛大學生前五強 逢甲為私校龍頭</a>
+                            <a href="https://www.informationsecurity.com.tw/article/article_detail.aspx?aid=10814" class="list-group-item list-group-item-action">「NICS 台灣資安計畫」助力中小型企業、非營利組織強化資安</a>
+                        </div><div class="text-center"><a href="/technology_news/" class="btn btn-primary custom-btn-style" aria-label="觀看更多 - 科技要聞">觀看更多</a></div></div>
+                        <div class="mt-3"><h2 class="fw-bold">競賽資訊</h2><div class="list-group mb-4">
+                            <a href="https://www.redbull.com/tw-zh/events/red-bull-basement-taiwan-2026" class="list-group-item list-group-item-action">Red Bull Basement 2026</a>
+                            <a href="https://sites.google.com/view/fcutechcomp/%E9%A6%96%E9%A0%81" class="list-group-item list-group-item-action">2026逢甲大學共善創新競賽</a>
+                            <a href="https://fpcl.com.tw/event-information/1st-fupin-industry-academia-innovation-competition/" class="list-group-item list-group-item-action">第一屆 富品盃AI創新應用競賽</a>
+                            <a href="https://www.cacet.org/web/2026creation/index.html" class="list-group-item list-group-item-action">全國創意與智慧科技競賽</a>
+                        </div><div class="text-center"><a href="/competition_news/" class="btn btn-primary custom-btn-style" aria-label="觀看更多 - 競賽資訊">觀看更多</a></div></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </section>
+</main>
+
+<footer class="custom-bg-color-1 border-top-0 m-0 pt-5 pb-4">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-5"><p>逢甲資訊工程系成立於1969年，是我國資訊教育界先驅之一，具有學士班、碩士班及博士班，學制完整形成相互學習的場域，迄今已有畢業系友萬餘人。本系以教學為本，建立扎實基礎; 精實研究，厚實創能人才; 鼓勵產學合作，培育務實能力。</p><img src="/static/image/logo_footer.ed94b80e9e25.svg" style="height:65px" width="200" height="65" alt="iecs-logo" loading="lazy"><img src="/static/image/IEET.9fdebee6472f.svg" style="height:90px" width="300" height="90" alt="ieet-logo" loading="lazy"><p><a href="/nlhsueh">Developed by Software Engineering Lab</a></p></div>
+            <div class="col-sm-6 col-lg-2"><h2 class="custom-fontsize-6 mb-3">快速連結</h2><ul class="list-unstyled"><li><a href="http://www.fcu.edu.tw">逢甲大學</a></li><li><a href="https://ilearn2.fcu.edu.tw/">ilearn2.0</a></li><li><a href="http://www.coiee.fcu.edu.tw">資訊電機學院</a></li></ul></div>
+            <div class="col-sm-6 col-lg-2"><h2 class="custom-fontsize-6 mb-3">常用服務</h2><ul class="list-unstyled"><li><a href="https://coursesearch02.fcu.edu.tw/main.aspx">課程檢索系統</a></li><li><a href="https://topic-coiee.fcu.edu.tw/booking?unit=dcb44906-4411-4e7f-b7d1-12afb73e173e">研討室借用系統</a></li><li><a href="https://topic-coiee.fcu.edu.tw/booking">資電學院資源借用</a></li><li><a href="https://topic-coiee.fcu.edu.tw/">專題計畫管理系統</a></li><li><a href="https://intern.iecs.fcu.edu.tw/">產學實習管理系統</a></li></ul></div>
+            <div class="col-sm-6 col-lg-3"><h2 class="custom-fontsize-6 mb-3">聯絡我們</h2><a href="https://goo.gl/maps/Ly6QMouiP8y"><p>逢甲大學 資訊電機館二樓(資電201)<br>台中市西屯區逢大路127號(文華路100號)</p></a><a href="tel:0424517250"><p class="mb-0">聯絡電話：0424517250#3701</p></a><a href="mailto:iecs@fcu.edu.tw"><p class="mb-0">聯絡信箱：iecs@fcu.edu.tw</p></a><a href="https://www.fcu.edu.tw/privacy/"><p>個資保護政策</p></a><div class="social-icons mt-3"><a href="https://www.facebook.com/groups/FCUIECSSA/about/" class="me-2" target="_blank" rel="noopener" aria-label="Facebook"><i class="fab fa-facebook-f fa-lg"></i></a><a href="https://goo.gl/maps/Ly6QMouiP8y" target="_blank" rel="noopener" aria-label="Google Map"><i class="fas fa-map-marker-alt fa-lg"></i></a></div></div>
+        </div>
+    </div>
+</footer>
+
+<!-- 脚本优化：延迟加载并确保依赖顺序，修复 Swiper 未定义错误 -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous" defer></script>
+<script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js" defer></script>
+<script src="/static/js/web_base.796446eeebc5.js" defer></script>
+<script src="/static/js/web_index.682f25d0b190.js" defer></script>
+<script>
+    (function() {
+        // 确保 Swiper 可用再初始化，消除控制台错误
+        function initSwiper() {
+            if (typeof Swiper !== 'undefined') {
+                new Swiper('.mySwiper', {
+                    slidesPerView: 1.2,
+                    spaceBetween: 20,
+                    navigation: { nextEl: '.swiper-button-next', prevEl: '.swiper-button-prev' },
+                    breakpoints: { 640: { slidesPerView: 2 }, 992: { slidesPerView: 3 } },
+                    touchRatio: 1,
+                    simulateTouch: true
+                });
+            } else {
+                // 重试机制（最多10次，间隔100ms）
+                let retries = 0;
+                const maxRetries = 10;
+                const interval = setInterval(() => {
+                    if (typeof Swiper !== 'undefined') {
+                        clearInterval(interval);
+                        new Swiper('.mySwiper', {
+                            slidesPerView: 1.2,
+                            spaceBetween: 20,
+                            navigation: { nextEl: '.swiper-button-next', prevEl: '.swiper-button-prev' },
+                            breakpoints: { 640: { slidesPerView: 2 }, 992: { slidesPerView: 3 } }
+                        });
+                    } else if (++retries >= maxRetries) {
+                        clearInterval(interval);
+                        console.warn('Swiper未能加载，轮播功能不可用');
+                    }
+                }, 100);
+            }
+        }
+
+        if (document.readyState === 'loading') {
+            document.addEventListener('DOMContentLoaded', initSwiper);
+        } else {
+            initSwiper();
+        }
+
+        // 视频模态框延迟加载 YouTube iframe，避免阻塞
+        const modal = document.getElementById('modalForVideo');
+        if (modal) {
+            modal.addEventListener('show.bs.modal', function (event) {
+                const button = event.relatedTarget;
+                const url = button?.getAttribute('data-url');
+                const iframe = modal.querySelector('#youtubeIframe');
+                if (url && iframe) {
+                    let videoId = '';
+                    if (url.includes('youtube.com/watch')) {
+                        const params = new URLSearchParams(new URL(url).search);
+                        videoId = params.get('v');
+                    } else if (url.includes('youtu.be/')) {
+                        videoId = url.split('/').pop();
+                    }
+                    if (videoId) iframe.src = `https://www.youtube.com/embed/${videoId}?autoplay=1`;
+                }
+            });
+            modal.addEventListener('hidden.bs.modal', function () {
+                const iframe = modal.querySelector('#youtubeIframe');
+                if (iframe) iframe.src = '';
+            });
+        }
+
+        // 下拉菜单 ARIA 状态管理
+        document.querySelectorAll('.dropdown-btn').forEach(btn => {
+            btn.addEventListener('click', function(e) {
+                const expanded = this.getAttribute('aria-expanded') === 'true' ? 'false' : 'true';
+                this.setAttribute('aria-expanded', expanded);
+            });
+        });
+    })();
+</script>
+</body>
+</html>
